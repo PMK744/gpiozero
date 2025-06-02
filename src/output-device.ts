@@ -3,6 +3,7 @@ import type { OutputPin } from "rppal";
 import { Device } from "./device";
 import { Led } from "./led";
 import { RGBLed } from "./rgb-led";
+import { BarGraph } from "./bar-graph";
 
 class OutputDevice<T> extends Device<T> {
   /**
@@ -35,6 +36,14 @@ class OutputDevice<T> extends Device<T> {
    * @returns true if the output device is an RGBLed, false otherwise.
    */
   public isRGBLed(): this is RGBLed {
+    return false;
+  }
+
+  /**
+   * Whether the output device is a Bar Graph.
+   * @returns true if the output device is a BarGraph, false otherwise.
+   */
+  public isBarGraph(): this is BarGraph {
     return false;
   }
 }
