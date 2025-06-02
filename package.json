@@ -1,0 +1,38 @@
+{
+  "name": "gpiozero",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "gpio",
+    "raspberry pi"
+  ],
+  "author": "Payton Kerby",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PMK744/gpiozero.git"
+  },
+  "files": [
+    "dist/**",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "bugs": {
+    "url": "https://github.com/PMK744/gpiozero/issues"
+  },
+  "homepage": "https://github.com/PMK744/gpiozero#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "rppal": "^0.0.3"
+  }
+}
