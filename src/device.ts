@@ -2,6 +2,7 @@ import { Pin, InputPin, OutputPin } from "rppal";
 
 import { GPIO } from "./gpio";
 import { OutputDevice } from "./output-device";
+import { InputDevice } from "./input-device";
 
 class Device<T> {
   /**
@@ -19,6 +20,21 @@ class Device<T> {
 
     // Register the device with the GPIO class
     GPIO.devices.set(pins, this);
+  }
+
+  /**
+   * Check if the device is an input device.
+   * @returns true if the device is an InputDevice, false otherwise.
+   */
+  public isInputDevice(): this is InputDevice<T> {
+    // Check if the pin is an InputPin
+    for (const pin of this.pins) {
+      // Check if all the pins are InputPins
+      if (!(pin instanceof InputPin)) return false;
+    }
+
+    // If all pins are InputPins, return true
+    return true;
   }
 
   /**

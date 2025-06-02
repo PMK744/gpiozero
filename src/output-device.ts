@@ -2,6 +2,7 @@ import type { OutputPin } from "rppal";
 
 import { Device } from "./device";
 import { Led } from "./led";
+import { RGBLed } from "./rgb-led";
 
 class OutputDevice<T> extends Device<T> {
   /**
@@ -26,6 +27,14 @@ class OutputDevice<T> extends Device<T> {
    * @returns true if the output device is a Led, false otherwise.
    */
   public isLed(): this is Led {
+    return false;
+  }
+
+  /**
+   * Whether the output device is an RGB LED.
+   * @returns true if the output device is an RGBLed, false otherwise.
+   */
+  public isRGBLed(): this is RGBLed {
     return false;
   }
 }
