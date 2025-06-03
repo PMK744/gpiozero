@@ -35,7 +35,7 @@ class RGBLed extends OutputDevice<[OutputPin, OutputPin, OutputPin]> {
     this.pins[0].clearPwm();
 
     // Check if the LED is active
-    if (this.value) this.pins[0].setPwmFrequency(10000, value);
+    if (this.value) this.pins[0].setPwmFrequency(1000, this.activeHigh ? value : 1 - value);
   }
 
   /**
@@ -56,7 +56,7 @@ class RGBLed extends OutputDevice<[OutputPin, OutputPin, OutputPin]> {
     this.pins[1].clearPwm();
 
     // Check if the LED is active
-    if (this.value) this.pins[1].setPwmFrequency(10000, value);
+    if (this.value) this.pins[1].setPwmFrequency(1000, this.activeHigh ? value : 1 - value);
   }
 
   /**
@@ -77,7 +77,7 @@ class RGBLed extends OutputDevice<[OutputPin, OutputPin, OutputPin]> {
     this.pins[2].clearPwm();
 
     // Check if the LED is active
-    if (this.value) this.pins[2].setPwmFrequency(10000, value);
+    if (this.value) this.pins[2].setPwmFrequency(1000, this.activeHigh ? value : 1 - value);
   }
 
   /**
@@ -136,9 +136,9 @@ class RGBLed extends OutputDevice<[OutputPin, OutputPin, OutputPin]> {
     const bluePin = this.pins[2];
 
     // Set the PWM frequency for each pin based on the activeHigh property
-    redPin.setPwmFrequency(10000, this.activeHigh ? this.red : 1 - this.red);
-    greenPin.setPwmFrequency(10000, this.activeHigh ? this.green : 1 - this.green);
-    bluePin.setPwmFrequency(10000, this.activeHigh ? this.blue : 1 - this.blue);
+    redPin.setPwmFrequency(1000, this.activeHigh ? this.red : 1 - this.red);
+    greenPin.setPwmFrequency(1000, this.activeHigh ? this.green : 1 - this.green);
+    bluePin.setPwmFrequency(1000, this.activeHigh ? this.blue : 1 - this.blue);
   }
 
   /**
