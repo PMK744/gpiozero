@@ -1,9 +1,8 @@
 import { OutputPin } from "rppal";
 import { OutputDevice } from "./output-device";
-import { GPIO } from "./gpio";
 import { Led } from "./led";
 
-class BarGraph extends OutputDevice<Array<OutputPin>> {
+class BarGraphLed extends OutputDevice<Array<OutputPin>> {
   /**
    * Whether the LEDs are active when the output is high.
    * If true, the LEDs will turn on when the output is high.
@@ -60,7 +59,7 @@ class BarGraph extends OutputDevice<Array<OutputPin>> {
   }
 
   /**
-   * Create a new BarGraph instance.
+   * Create a new BarGraphLed instance.
    * @param pins The GPIO pins to use for the bar graph.
    * @param activeHigh Whether the LEDs are active when the output is high.
    * @param initialValue The initial value of the bar graph (number of LEDs on).
@@ -88,10 +87,25 @@ class BarGraph extends OutputDevice<Array<OutputPin>> {
     }
   }
 
-  public override isBarGraph(): this is BarGraph {
-    // Check if the device is a BarGraph
+  public override on(): void {
+    // Turn on all LEDs in the bar graph
+    for (const led of this.leds) led.on();
+  }
+
+  public override off(): void {
+    // Turn off all LEDs in the bar graph
+    for (const led of this.leds) led.off();
+  }
+
+  public override toggle(): void {
+    // Toggle the state of all LEDs in the bar graph
+    for (const led of this.leds) led.toggle();
+  }
+
+  public override isBarGraph(): this is BarGraphLed {
+    // Check if the device is a BarGraphLed
     return true;
   }
 }
 
-export { BarGraph };
+export { BarGraphLed };

@@ -5,4 +5,4 @@ export * from "./button";
 export * from "./output-device";
 export * from "./led";
 export * from "./rgb-led";
-export * from "./bar-graph";
+export * from "./bar-graph-led";

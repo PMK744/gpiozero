@@ -9,6 +9,22 @@ class Gpio extends IGpio {
   */
   public readonly devices = new Map<Array<Pin | InputPin | OutputPin>, Device<unknown>>();
 
+  public constructor() {
+    super();
+
+    // Listen of the termination signal to clean up GPIO devices
+    process.on("SIGINT", () => {
+      // Iterate through all the devices in the map
+      for (const [, device] of this.devices) {
+        // If the device is an output device, turn it off
+        if (device.isOutputDevice()) device.off();
+      }
+
+      // Exit the process after cleaning up
+      process.exit(0);
+    });
+  }
+
   public getDevice(pin: number): Device<unknown> | null {
     // Iterate through the devices map to find the device with the specified pin
     for (const [pins, device] of this.devices) {

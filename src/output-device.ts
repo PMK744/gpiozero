@@ -3,7 +3,7 @@ import type { OutputPin } from "rppal";
 import { Device } from "./device";
 import { Led } from "./led";
 import { RGBLed } from "./rgb-led";
-import { BarGraph } from "./bar-graph";
+import { BarGraphLed } from "./bar-graph-led";
 
 class OutputDevice<T> extends Device<T> {
   /**
@@ -22,6 +22,27 @@ class OutputDevice<T> extends Device<T> {
     // Assign the pins to the output device
     this.pins = pins as T & Array<OutputPin>;
   }
+
+  /**
+   * Turns the device on.
+   */
+  public on(): void {
+    throw new Error(`Method ${this.constructor.name}.on() not implemented.`);
+  };
+
+  /**
+   * Turns the device off.
+   */
+  public off(): void {
+    throw new Error(`Method ${this.constructor.name}.off() not implemented.`);
+  };
+
+  /**
+   * Toggles the device state.
+   */
+  public toggle(): void {
+    throw new Error(`Method ${this.constructor.name}.toggle() not implemented.`);
+  };
 
   /**
    * Whether the output device is a LED.
@@ -43,7 +64,7 @@ class OutputDevice<T> extends Device<T> {
    * Whether the output device is a Bar Graph.
    * @returns true if the output device is a BarGraph, false otherwise.
    */
-  public isBarGraph(): this is BarGraph {
+  public isBarGraph(): this is BarGraphLed {
     return false;
   }
 }

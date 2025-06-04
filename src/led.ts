@@ -41,28 +41,18 @@ class Led extends OutputDevice<[OutputPin]> {
     else this.off();
   }
 
-  /**
-   * Turns the device on.
-   */
   public on(): void {
     // Check if the LED is active high or low and set the pin accordingly
     if (this.activeHigh) this.pins[0].setHigh();
     else this.pins[0].setLow();
   }
 
-  /**
-   * Turns the device off.
-   */
   public off(): void {
     // Check if the LED is active high or low and set the pin accordingly
     if (this.activeHigh) this.pins[0].setLow();
     else this.pins[0].setHigh();
   }
 
-  /**
-   * Toggles the device state.
-   * If the LED is currently on, it will turn off; if it is off, it will turn on.
-   */
   public toggle(): void {
     // Toggle the LED state based on the current value
     if (this.value) this.off();
